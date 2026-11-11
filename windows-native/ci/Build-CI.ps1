@@ -59,10 +59,24 @@ try {
     foreach ($Architecture in @(@('amd64','-m'), @('wow64','-o'))) {
         $Dir = Join-Path $Output $Architecture[0]
         New-Item -ItemType Directory -Force -Path $Dir | Out-Null
-        Copy-Item (Join-Path $Root 'source\bgmyuni.klc') $Dir
+        # kbdutool 3.40 does not have a VK_TAB name in its editable key-name
+        # table. The explicit 0f TAB row produces #ERROR# in generated C.
+        # Omit that redundant row ONLY in the build copy; its standard tables
+        # already handle Tab. Preserve the original source and all 94 mappings.
+        $Text = [IO.File]::ReadAllText((Join-Path $Root 'source\bgmyuni.klc'), [Text.Encoding]::Unicode)
+        $TabRow = "0f`tTAB`t0`t0009`t0009`t-1"
+        if (($Text.Split(@($TabRow), [StringSplitOptions]::None)).Length -ne 2) { throw 'Expected exactly one explicit Tab row; review compiler-input conversion.' }
+        $Text = $Text.Replace($TabRow, '// Tab uses the compiler standard keyboard tables.')
+        [IO.File]::WriteAllText((Join-Path $Dir 'bgmyuni.klc'), $Text, [Text.Encoding]::Unicode)
+        Copy-Item (Join-Path $Dir 'bgmyuni.klc') (Join-Path $Logs ('compiler-input-' + $Architecture[0] + '.klc'))
         Push-Location $Dir
         try { Run $Tool @('-u','-w',$Architecture[1],'bgmyuni.klc') ('compile-' + $Architecture[0]) }
-        finally { Pop-Location }
+        finally {
+            Get-ChildItem $Dir -File | Where-Object { $_.Extension -in '.c','.h','.rc','.def' } | ForEach-Object {
+                Copy-Item $_.FullName (Join-Path $Logs ($Architecture[0] + '-' + $_.Name))
+            }
+            Pop-Location
+        }
         if (-not (Test-Path (Join-Path $Dir 'bgmyuni.dll'))) { throw "Compiler did not produce $($Architecture[0]) DLL." }
     }
     # WiX 3 is preinstalled on windows-2022; never fetch commercial WiX variants.
