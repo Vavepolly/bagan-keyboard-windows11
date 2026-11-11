@@ -1,0 +1,19 @@
+name: Windows Native Keyboard Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Windows build environment
+        shell: powershell
+        run: |
+          Write-Host "Windows runner is working"
+          Write-Host "Architecture: $env:PROCESSOR_ARCHITECTURE"
+          Write-Host "Keyboard source:"
+          Get-Item windows-native/source/bgmyuni.klc
+          Write-Host "MSKLC availability:"
+          Get-ChildItem "C:\Program Files (x86)\Microsoft Keyboard Layout Creator*" -ErrorAction SilentlyContinue
