@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@keymanapp/kmc": "18.0.255",
+    "@keymanapp/common-types": "18.0.255",
+    "jszip": "3.10.2",
+    "marked": "7.0.5"
+  },
+  "private": true,
+  "scripts": {
+    "generate": "node scripts/generate.mjs && node scripts/help.mjs",
+    "build": "npm run generate && kmc --no-error-reporting build -w bagan-full.kmn -o dist/bagan_full.kmx && kmc --no-error-reporting build -w bagan_full.kps -o dist/bagan_full.kmp",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "npm run build && npm test"
+  }
+}

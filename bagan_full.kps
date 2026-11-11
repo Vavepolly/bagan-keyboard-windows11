@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package>
+  <System><FileVersion>7.0</FileVersion></System>
+  <Options><ReadMeFile>README.htm</ReadMeFile><FollowKeyboardVersion/></Options>
+  <Info>
+    <Name>Bagan Style Myanmar Windows (unofficial)</Name>
+    <Description>Local reference-derived logical-order Myanmar Unicode keyboard; not verified official Bagan.</Description>
+  </Info>
+  <Files>
+    <File><Name>dist/bagan_full.kmx</Name></File>
+    <File><Name>README.htm</Name></File>
+    <File><Name>KEYMAP.md</Name></File>
+  </Files>
+  <Keyboards><Keyboard><ID>bagan_full</ID><Languages><Language ID="my">Burmese</Language></Languages></Keyboard></Keyboards>
+</Package>

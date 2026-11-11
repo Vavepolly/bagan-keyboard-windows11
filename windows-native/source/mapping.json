@@ -1,0 +1,440 @@
+{
+  "layoutId": "bgmyuni",
+  "displayName": "Bagan Style Myanmar Native (unofficial)",
+  "sourceFile": "../bagan-full.kmn",
+  "sourceSha256": "1ddd851c1bd7a5804be853818be1b06e96bf03dea2230cebd4631190f3e0e313",
+  "sourceKeyboardVersion": "0.3.0",
+  "hostLocale": "en-US",
+  "localeId": "00000409",
+  "outputLanguage": "my",
+  "counts": {
+    "normal": 47,
+    "shift": 47
+  },
+  "capsLockPolicy": "ignored; Shift alone selects shifted output",
+  "rows": [
+    {
+      "scanCode": "02",
+      "keymanKey": "K_1",
+      "virtualKey": "1",
+      "caps": 0,
+      "normal": "1",
+      "shift": "!",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "03",
+      "keymanKey": "K_2",
+      "virtualKey": "2",
+      "caps": 0,
+      "normal": "2",
+      "shift": "@",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "04",
+      "keymanKey": "K_3",
+      "virtualKey": "3",
+      "caps": 0,
+      "normal": "3",
+      "shift": "#",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "05",
+      "keymanKey": "K_4",
+      "virtualKey": "4",
+      "caps": 0,
+      "normal": "4",
+      "shift": "$",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "06",
+      "keymanKey": "K_5",
+      "virtualKey": "5",
+      "caps": 0,
+      "normal": "5",
+      "shift": "%",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "07",
+      "keymanKey": "K_6",
+      "virtualKey": "6",
+      "caps": 0,
+      "normal": "6",
+      "shift": "^",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "08",
+      "keymanKey": "K_7",
+      "virtualKey": "7",
+      "caps": 0,
+      "normal": "7",
+      "shift": "ရ",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "09",
+      "keymanKey": "K_8",
+      "virtualKey": "8",
+      "caps": 0,
+      "normal": "8",
+      "shift": "*",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "0a",
+      "keymanKey": "K_9",
+      "virtualKey": "9",
+      "caps": 0,
+      "normal": "9",
+      "shift": "(",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "0b",
+      "keymanKey": "K_0",
+      "virtualKey": "0",
+      "caps": 0,
+      "normal": "0",
+      "shift": ")",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "0c",
+      "keymanKey": "K_HYPHEN",
+      "virtualKey": "OEM_MINUS",
+      "caps": 0,
+      "normal": "-",
+      "shift": "_",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "0d",
+      "keymanKey": "K_EQUAL",
+      "virtualKey": "OEM_PLUS",
+      "caps": 0,
+      "normal": "=",
+      "shift": "+",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "10",
+      "keymanKey": "K_Q",
+      "virtualKey": "Q",
+      "caps": 0,
+      "normal": "ဆ",
+      "shift": "ဈ",
+      "ctrl": "0011"
+    },
+    {
+      "scanCode": "11",
+      "keymanKey": "K_W",
+      "virtualKey": "W",
+      "caps": 0,
+      "normal": "တ",
+      "shift": "ဝ",
+      "ctrl": "0017"
+    },
+    {
+      "scanCode": "12",
+      "keymanKey": "K_E",
+      "virtualKey": "E",
+      "caps": 0,
+      "normal": "န",
+      "shift": "ဣ",
+      "ctrl": "0005"
+    },
+    {
+      "scanCode": "13",
+      "keymanKey": "K_R",
+      "virtualKey": "R",
+      "caps": 0,
+      "normal": "မ",
+      "shift": "၎",
+      "ctrl": "0012"
+    },
+    {
+      "scanCode": "14",
+      "keymanKey": "K_T",
+      "virtualKey": "T",
+      "caps": 0,
+      "normal": "အ",
+      "shift": "ဤ",
+      "ctrl": "0014"
+    },
+    {
+      "scanCode": "15",
+      "keymanKey": "K_Y",
+      "virtualKey": "Y",
+      "caps": 0,
+      "normal": "ပ",
+      "shift": "၌",
+      "ctrl": "0019"
+    },
+    {
+      "scanCode": "16",
+      "keymanKey": "K_U",
+      "virtualKey": "U",
+      "caps": 0,
+      "normal": "က",
+      "shift": "ဥ",
+      "ctrl": "0015"
+    },
+    {
+      "scanCode": "17",
+      "keymanKey": "K_I",
+      "virtualKey": "I",
+      "caps": 0,
+      "normal": "င",
+      "shift": "၍",
+      "ctrl": "0009"
+    },
+    {
+      "scanCode": "18",
+      "keymanKey": "K_O",
+      "virtualKey": "O",
+      "caps": 0,
+      "normal": "သ",
+      "shift": "ဿ",
+      "ctrl": "000f"
+    },
+    {
+      "scanCode": "19",
+      "keymanKey": "K_P",
+      "virtualKey": "P",
+      "caps": 0,
+      "normal": "စ",
+      "shift": "ဏ",
+      "ctrl": "0010"
+    },
+    {
+      "scanCode": "1a",
+      "keymanKey": "K_LBRKT",
+      "virtualKey": "OEM_4",
+      "caps": 0,
+      "normal": "ဟ",
+      "shift": "ဧ",
+      "ctrl": "001b"
+    },
+    {
+      "scanCode": "1b",
+      "keymanKey": "K_RBRKT",
+      "virtualKey": "OEM_6",
+      "caps": 0,
+      "normal": "ဩ",
+      "shift": "ဪ",
+      "ctrl": "001d"
+    },
+    {
+      "scanCode": "1e",
+      "keymanKey": "K_A",
+      "virtualKey": "A",
+      "caps": 0,
+      "normal": "ေ",
+      "shift": "ဗ",
+      "ctrl": "0001"
+    },
+    {
+      "scanCode": "1f",
+      "keymanKey": "K_S",
+      "virtualKey": "S",
+      "caps": 0,
+      "normal": "ျ",
+      "shift": "ှ",
+      "ctrl": "0013"
+    },
+    {
+      "scanCode": "20",
+      "keymanKey": "K_D",
+      "virtualKey": "D",
+      "caps": 0,
+      "normal": "ိ",
+      "shift": "ီ",
+      "ctrl": "0004"
+    },
+    {
+      "scanCode": "21",
+      "keymanKey": "K_F",
+      "virtualKey": "F",
+      "caps": 0,
+      "normal": "်",
+      "shift": "္",
+      "ctrl": "0006"
+    },
+    {
+      "scanCode": "22",
+      "keymanKey": "K_G",
+      "virtualKey": "G",
+      "caps": 0,
+      "normal": "ါ",
+      "shift": "ွ",
+      "ctrl": "0007"
+    },
+    {
+      "scanCode": "23",
+      "keymanKey": "K_H",
+      "virtualKey": "H",
+      "caps": 0,
+      "normal": "့",
+      "shift": "ံ",
+      "ctrl": "0008"
+    },
+    {
+      "scanCode": "24",
+      "keymanKey": "K_J",
+      "virtualKey": "J",
+      "caps": 0,
+      "normal": "ြ",
+      "shift": "ဲ",
+      "ctrl": "000a"
+    },
+    {
+      "scanCode": "25",
+      "keymanKey": "K_K",
+      "virtualKey": "K",
+      "caps": 0,
+      "normal": "ု",
+      "shift": "ဒ",
+      "ctrl": "000b"
+    },
+    {
+      "scanCode": "26",
+      "keymanKey": "K_L",
+      "virtualKey": "L",
+      "caps": 0,
+      "normal": "ူ",
+      "shift": "ဓ",
+      "ctrl": "000c"
+    },
+    {
+      "scanCode": "27",
+      "keymanKey": "K_COLON",
+      "virtualKey": "OEM_1",
+      "caps": 0,
+      "normal": "း",
+      "shift": "ဂ",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "28",
+      "keymanKey": "K_QUOTE",
+      "virtualKey": "OEM_7",
+      "caps": 0,
+      "normal": "'",
+      "shift": "ဎ",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "29",
+      "keymanKey": "K_BKQUOTE",
+      "virtualKey": "OEM_3",
+      "caps": 0,
+      "normal": "`",
+      "shift": "~",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "2b",
+      "keymanKey": "K_BKSLASH",
+      "virtualKey": "OEM_5",
+      "caps": 0,
+      "normal": "\\",
+      "shift": "|",
+      "ctrl": "001c"
+    },
+    {
+      "scanCode": "2c",
+      "keymanKey": "K_Z",
+      "virtualKey": "Z",
+      "caps": 0,
+      "normal": "ဖ",
+      "shift": "ဇ",
+      "ctrl": "001a"
+    },
+    {
+      "scanCode": "2d",
+      "keymanKey": "K_X",
+      "virtualKey": "X",
+      "caps": 0,
+      "normal": "ထ",
+      "shift": "ဌ",
+      "ctrl": "0018"
+    },
+    {
+      "scanCode": "2e",
+      "keymanKey": "K_C",
+      "virtualKey": "C",
+      "caps": 0,
+      "normal": "ခ",
+      "shift": "ဃ",
+      "ctrl": "0003"
+    },
+    {
+      "scanCode": "2f",
+      "keymanKey": "K_V",
+      "virtualKey": "V",
+      "caps": 0,
+      "normal": "လ",
+      "shift": "ဠ",
+      "ctrl": "0016"
+    },
+    {
+      "scanCode": "30",
+      "keymanKey": "K_B",
+      "virtualKey": "B",
+      "caps": 0,
+      "normal": "ဘ",
+      "shift": "ယ",
+      "ctrl": "0002"
+    },
+    {
+      "scanCode": "31",
+      "keymanKey": "K_N",
+      "virtualKey": "N",
+      "caps": 0,
+      "normal": "ည",
+      "shift": "ဉ",
+      "ctrl": "000e"
+    },
+    {
+      "scanCode": "32",
+      "keymanKey": "K_M",
+      "virtualKey": "M",
+      "caps": 0,
+      "normal": "ာ",
+      "shift": "ဦ",
+      "ctrl": "000d"
+    },
+    {
+      "scanCode": "33",
+      "keymanKey": "K_COMMA",
+      "virtualKey": "OEM_COMMA",
+      "caps": 0,
+      "normal": "၊",
+      "shift": "ဋ",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "34",
+      "keymanKey": "K_PERIOD",
+      "virtualKey": "OEM_PERIOD",
+      "caps": 0,
+      "normal": "။",
+      "shift": "ဍ",
+      "ctrl": "-1"
+    },
+    {
+      "scanCode": "35",
+      "keymanKey": "K_SLASH",
+      "virtualKey": "OEM_2",
+      "caps": 0,
+      "normal": "/",
+      "shift": "?",
+      "ctrl": "-1"
+    }
+  ]
+}

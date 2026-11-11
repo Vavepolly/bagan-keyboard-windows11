@@ -1,0 +1,20 @@
+
+c Bagan-style Myanmar Unicode Keyboard
+c Windows 11 - Version 0.1
+c Physical keyboard layout
+
+store(&NAME) 'Bagan Style Myanmar'
+store(&VERSION) '10.0'
+store(&KEYBOARDVERSION) '0.1'
+store(&TARGETS) 'desktop'
+
+begin Unicode > use(Main)
+
+group(Main) using keys
+
+c Initial test mappings (not final Bagan layout)
++ [K_A] > 'က'
++ [K_S] > 'ခ'
++ [K_D] > 'ဂ'
++ [K_F] > 'င'
++ [K_G] > 'စ'

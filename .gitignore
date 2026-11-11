@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+*.log
+*.tmp
+*.bak
+*.backup.kmn
+dist/
+release/
+windows-native/release/
+luna-reference.keylayout
+luna-reference.kmn
+luna-reference.kmx
+bagan-full.pre-0.3.0.kmn
+*.kmx
