@@ -19,7 +19,7 @@ function Query([object]$Database, [string]$Sql, [int]$Columns) {
     $Rows = @()
     while ($Record = $View.Fetch()) {
         $Values = @()
-        for ($i=1; $i -le $Columns; $i++) { $Values += $Record.StringData($i) }
+        for ($i=1; $i -le $Columns; $i++) { $Values += $Record.GetString($i) }
         $Rows += ,$Values
     }
     $View.Close()
@@ -42,10 +42,12 @@ try {
     Assert (Test-Path $Msi) 'A real installer exists'
     Assert ((Machine (Join-Path $Build 'amd64\bgmyuni.dll')) -eq 0x8664) 'AMD64 DLL architecture'
     Assert ((Machine (Join-Path $Build 'wow64\bgmyuni.dll')) -eq 0x14c) 'WOW64 DLL PE architecture'
-    $Installer = New-Object -ComObject WindowsInstaller.Installer
-    $Db = $Installer.GetType().InvokeMember('OpenDatabase','InvokeMethod',$null,$Installer,@($Msi,0))
-    $Summary = $Db.GetType().InvokeMember('SummaryInformation','GetProperty',$null,$Db,@(0))
-    $Template = $Summary.GetType().InvokeMember('Property','GetProperty',$null,$Summary,@(7))
+    # Use the already-present WiX DTF managed API instead of late-bound COM
+    # property calls, which return DISP_E_TYPEMISMATCH on this runner.
+    $WixRoot = if ($env:WIX) { $env:WIX } else { Join-Path ${env:ProgramFiles(x86)} 'WiX Toolset v3.14' }
+    Add-Type -Path (Join-Path $WixRoot 'SDK\Microsoft.Deployment.WindowsInstaller.dll')
+    $Db = New-Object Microsoft.Deployment.WindowsInstaller.Database -ArgumentList @($Msi, [Microsoft.Deployment.WindowsInstaller.DatabaseOpenMode]::ReadOnly)
+    $Template = $Db.SummaryInfo.Template
     Assert ($Template -match '^x64(;|$)') 'MSI architecture is x64'
     $Files = Query $Db 'SELECT `File`, `FileName`, `Component_` FROM `File`' 3
     Assert ($Files.Count -eq 4) 'MSI has only two keyboard DLLs and two help files'
@@ -59,6 +61,7 @@ try {
     foreach ($Entry in $Registry) {
         Assert ($Entry[0] -eq '2' -and $Entry[1] -in @('SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a7b90409','SOFTWARE\BaganNativeProject')) 'Registry write scope is restricted'
     }
+    $Db.Close()
     # Extract the embedded cabinet and compare to the compiled input, not just filenames.
     $Extract = Join-Path $env:RUNNER_TEMP 'bagan-payload-check'
     MsiExec @('/a',('"' + $Msi + '"'),('TARGETDIR="' + $Extract + '"')) 'extract-our-msi'
