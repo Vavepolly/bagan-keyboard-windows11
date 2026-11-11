@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="Bagan Style Myanmar Native (unofficial)" Language="1033"
+           Version="1.0.0" Manufacturer="Bagan Native Project"
+           UpgradeCode="E43C9D49-7D44-43D0-ADE6-719AE98458DC">
+    <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" Platform="x64"
+             Description="Keyman-free logical-order Myanmar Unicode keyboard" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version is already installed." />
+    <Binary Id="CollisionGuard" SourceFile="$(var.BuildRoot)\CollisionGuard.CA.dll" />
+    <CustomAction Id="CheckNativeTarget" BinaryKey="CollisionGuard" DllEntry="CheckNativeTarget" Execute="immediate" Return="check" />
+    <InstallExecuteSequence>
+      <Custom Action="CheckNativeTarget" Before="InstallInitialize">NOT REMOVE~="ALL"</Custom>
+    </InstallExecuteSequence>
+    <MediaTemplate EmbedCab="yes" />
+    <Property Id="ARPNOMODIFY" Value="1" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/Vavepolly/bagan-keyboard-windows11" />
+    <Property Id="EXISTING_LAYOUT_FILE">
+      <RegistrySearch Id="ExistingLayoutFile" Root="HKLM" Key="SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a7b90409" Name="Layout File" Type="raw" Win64="yes" />
+    </Property>
+    <Property Id="EXISTING_OWNER">
+      <RegistrySearch Id="ExistingOwner" Root="HKLM" Key="SOFTWARE\BaganNativeProject" Name="Owner" Type="raw" Win64="yes" />
+    </Property>
+    <Condition Message="Windows x64 is required.">Installed OR VersionNT64</Condition>
+    <Condition Message="The keyboard identifier is already owned by another layout. No files have been changed.">
+      Installed OR NOT EXISTING_LAYOUT_FILE OR (EXISTING_LAYOUT_FILE = "bgmyuni.dll" AND EXISTING_OWNER = "E43C9D49-7D44-43D0-ADE6-719AE98458DC")
+    </Condition>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="System64Folder">
+        <Component Id="NativeDll" Guid="647F4277-7C5D-45EB-8F93-63B20D5EDBA9" Win64="yes">
+          <File Id="NativeFile" Source="$(var.BuildRoot)\amd64\bgmyuni.dll" KeyPath="yes" />
+        </Component>
+        <Component Id="Registration" Guid="DE95FD10-BDE6-48A4-BAD6-DC7A62ED3AC8" Win64="yes">
+          <RegistryKey Root="HKLM" Key="SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a7b90409">
+            <RegistryValue Name="Layout File" Type="string" Value="bgmyuni.dll" KeyPath="yes" />
+            <RegistryValue Name="Layout Text" Type="string" Value="Bagan Style Myanmar Native (unofficial)" />
+            <RegistryValue Name="Layout Id" Type="string" Value="0b79" />
+          </RegistryKey>
+          <RegistryValue Root="HKLM" Key="SOFTWARE\BaganNativeProject" Name="Owner" Type="string" Value="E43C9D49-7D44-43D0-ADE6-719AE98458DC" />
+        </Component>
+      </Directory>
+      <Directory Id="SystemFolder">
+        <Component Id="Wow64Dll" Guid="9BC2ABFB-DB3F-4F88-B1B4-B4616309BF73" Win64="no">
+          <File Id="Wow64File" Source="$(var.BuildRoot)\wow64\bgmyuni.dll" KeyPath="yes" />
+        </Component>
+      </Directory>
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="INSTALLDIR" Name="Bagan Myanmar Native">
+          <Component Id="HelpFiles" Guid="9AB4F1C8-D56F-40ED-A86E-AF84DD5663B5" Win64="yes">
+            <File Id="ReadmeFile" Source="$(var.ProjectRoot)\ci\START-HERE.txt" KeyPath="yes" />
+            <File Id="MapFile" Source="$(var.ProjectRoot)\KEYMAP.md" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+    <Feature Id="Keyboard" Title="Native Myanmar keyboard" Level="1">
+      <ComponentRef Id="NativeDll" /><ComponentRef Id="Wow64Dll" />
+      <ComponentRef Id="Registration" /><ComponentRef Id="HelpFiles" />
+    </Feature>
+  </Product>
+</Wix>
