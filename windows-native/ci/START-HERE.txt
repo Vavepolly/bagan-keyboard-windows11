@@ -1,0 +1,25 @@
+Bagan Style Myanmar Native (unofficial) - Windows x64
+
+This download uses a standalone MSI, not Keyman and not the old setup.exe.
+
+1. Extract the GitHub Actions artifact ZIP with Extract All.
+2. Double-click Bagan-Myanmar-Native-x64.msi. Approve administrator access
+   for this package if you intend to install it. Wait for installation to finish.
+3. Open Settings > Time & language > Language & region.
+   Under English (United States), open ... > Language options > Add a keyboard.
+   Choose Bagan Style Myanmar Native (unofficial). Keep your usual US keyboard.
+4. Hold the Windows logo key and tap Space to choose the new keyboard.
+   Choose your usual US keyboard the same way to type English again.
+5. In Notepad with a Myanmar Unicode font, type U then A: expected ကေ.
+   Type consonants before vowels in logical Unicode order. Caps Lock is ignored;
+   use Shift for the second layer. Shift+7 types ရ. See KEYMAP.md for all keys.
+
+Uninstall: switch to your usual US keyboard, remove this keyboard from the
+language's keyboard list, then Settings > Apps > Installed apps >
+Bagan Style Myanmar Native (unofficial) > Uninstall. Restart if prompted.
+Do not delete anything from Windows system folders yourself.
+
+No Keyman, MSKLC or background application is required for typing.
+This is not a proven exact match to Bagan Keyboard. GitHub's Windows Server
+2022 runner tests do not establish Windows 11 installation, rendering or
+editing compatibility. See CI-INSTALL.md and ACCEPTANCE-WINDOWS.md.
