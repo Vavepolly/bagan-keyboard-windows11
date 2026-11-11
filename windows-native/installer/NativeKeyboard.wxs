@@ -25,7 +25,7 @@
       Installed OR NOT EXISTING_LAYOUT_FILE OR (EXISTING_LAYOUT_FILE = "bgmyuni.dll" AND EXISTING_OWNER = "E43C9D49-7D44-43D0-ADE6-719AE98458DC")
     </Condition>
     <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="System64Folder">
+      <Directory Id="System64Folder" Name="." SourceName="amd64">
         <Component Id="NativeDll" Guid="647F4277-7C5D-45EB-8F93-63B20D5EDBA9" Win64="yes">
           <File Id="NativeFile" Source="$(var.BuildRoot)\amd64\bgmyuni.dll" KeyPath="yes" />
         </Component>
@@ -38,7 +38,7 @@
           <RegistryValue Root="HKLM" Key="SOFTWARE\BaganNativeProject" Name="Owner" Type="string" Value="E43C9D49-7D44-43D0-ADE6-719AE98458DC" />
         </Component>
       </Directory>
-      <Directory Id="SystemFolder">
+      <Directory Id="SystemFolder" Name="." SourceName="wow64">
         <Component Id="Wow64Dll" Guid="9BC2ABFB-DB3F-4F88-B1B4-B4616309BF73" Win64="no">
           <File Id="Wow64File" Source="$(var.BuildRoot)\wow64\bgmyuni.dll" KeyPath="yes" />
         </Component>
