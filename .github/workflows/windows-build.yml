@@ -3,17 +3,47 @@ name: Windows Native Keyboard Build
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: native-keyboard-build
+  cancel-in-progress: false
+
 jobs:
-  inspect:
+  build:
     runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@v4
-      - name: Check Windows build environment
+    timeout-minutes: 20
+    env:
+      PYTHONUTF8: '1'
+    defaults:
+      run:
         shell: powershell
+    steps:
+      - name: Preserve LF source bytes in checkout
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@v4
+      - name: Validate source and existing tracked-file integrity
+        run: python -B windows-native/ci/test_ci.py
+      - name: Obtain official MSKLC, compile and build MSI
+        run: .\windows-native\ci\Build-CI.ps1
+      - name: Inspect MSI and test temporary runner installation
+        run: .\windows-native\ci\Test-Package.ps1
+      - name: Upload verified native installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bagan-Myanmar-Native-x64
+          path: windows-native/release/*
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload diagnostics even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-build-diagnostics
+          path: windows-native/ci-output/diagnostics/
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Check source files were not rewritten
         run: |
-          Write-Host "Windows runner is working"
-          Write-Host "Architecture: $env:PROCESSOR_ARCHITECTURE"
-          Write-Host "Keyboard source:"
-          Get-Item windows-native/source/bgmyuni.klc
-          Write-Host "MSKLC availability:"
-          Get-ChildItem "C:\Program Files (x86)\Microsoft Keyboard Layout Creator*" -ErrorAction SilentlyContinue
+          git diff --exit-code
